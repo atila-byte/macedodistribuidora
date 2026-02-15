@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-blue: #1e3a8a;
+    --secondary-blue: #3b82f6;
+    --dark-bg: #0f172a;
+    --light-bg: #f8fafc;
+    --text-main: #1e293b;
+    --text-light: #f1f5f9;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Cabeçalho --- */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    padding: 0.8rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.logo-container img {
+    height: 90px;
+    width: auto;
+    transition: transform 0.3s;
+}
+.logo-container img:hover { transform: scale(1.05); }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-blue);
+    transition: width 0.3s;
+}
+nav a:hover::after { width: 100%; }
+
+/* --- Conteúdo Principal --- */
+main {
+    flex: 1;
+    padding: 3rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+h1 { color: var(--primary-blue); margin-bottom: 0.5rem; }
+
+/* Classe para espaçamento no catálogo */
+.page-subtitle {
+    margin-bottom: 3rem;
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+/* --- Hero Section (Banner Inicial) --- */
+.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: var(--text-light);
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    /* Estes dois são cruciais para o círculo não vazar */
+    position: relative;
+    overflow: hidden;
+}
+
+/* O CÓDIGO DO CÍRCULO DE VOLTA AQUI */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.08); /* Um pouco mais sutil */
+    border-radius: 50%;
+    pointer-events: none; /* Garante que não atrapalhe cliques */
+}
+
+.hero h1 { color: #fff; font-size: 2.5rem; position: relative; z-index: 2; }
+.hero p { position: relative; z-index: 2; }
+
+/* --- Features (Institucional) --- */
+.features {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.feature-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+    border-top: 5px solid var(--secondary-blue);
+}
+
+/* --- Contato --- */
+.contact-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.btn-whatsapp {
+    background: linear-gradient(90deg, #25D366, #128C7E);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.btn-whatsapp:hover { transform: scale(1.05); }
+
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    border: 1px solid #e2e8f0;
+}
+
+/* --- Catálogo --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.category-btn {
+    background: white;
+    color: var(--primary-blue);
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.category-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* --- Produtos --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: relative;
+    border: 1px solid #f0f0f0;
+}
+
+.maker-logo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    object-fit: contain;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-img-container {
+    height: 220px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.product-img { max-height: 100%; max-width: 100%; object-fit: contain; }
+.product-info { padding: 15px; }
+.product-name { color: var(--primary-blue); font-weight: 700; margin-bottom: 5px; }
+.tag { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 5px; font-size: 0.8rem; margin-right: 5px; }
+
+/* --- Rodapé --- */
+footer {
+    background-color: var(--dark-bg);
+    color: #94a3b8;
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 1rem;
+    }
+
+    .logo-container img { height: 70px; }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 1rem;
+        padding: 5px 10px;
+        background-color: #f1f5f9;
+        border-radius: 8px;
+    }
+
+    main { padding: 2rem 5%; }
+    
+    .hero { padding: 2rem 1.5rem; }
+    .hero h1 { font-size: 1.8rem; }
+
+    .contact-wrapper { width: 100%; }
+    
+    .btn-whatsapp {
+        width: 100%;
+        font-size: 1rem;
+        padding: 15px;
+        flex-direction: column;
+    }
+
+    .info-card { padding: 1.5rem; }
+
+    .products-grid { grid-template-columns: 1fr; }
+    
+    @media (min-width: 480px) and (max-width: 768px) {
+        .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+}
